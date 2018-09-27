@@ -1,0 +1,25 @@
+- hosts: cabinets_live
+  gather_facts: false
+  sudo: no
+  vars_files:
+      - vars_live.yml
+
+  pre_tasks:
+
+  roles:
+    - { role: live_operations, tags: 'live' }
+
+  post_tasks:
+
+- hosts: cabinets_dev
+  gather_facts: false
+  sudo: no
+  vars_files:
+       - vars_dev.yml
+
+  pre_tasks:
+
+  roles:
+    - { role: dev_operations, tags: 'dev' }
+
+  post_tasks:
